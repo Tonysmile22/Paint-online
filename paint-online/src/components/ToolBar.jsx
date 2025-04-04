@@ -2,19 +2,17 @@ import React from "react";
 import "../styles/toolbar.scss";
 import toolState from "../store/toolState";
 import Brush from "../tools/Brush";
-import Rect from "../tools/Rect";
-import Eraser from "../tools/Eraser";
-// import Circle from "../tools/Circle";
-// import Line from "../tools/Line";
-
 import canvasState from "../store/canvasState";
+import Rect from "../tools/Rect";
+// import Line from "../tools/Line";
+// import Circle from "../tools/Circle";
+import Eraser from "../tools/Eraser";
 
 const ToolBar = () => {
-
   const changeColor = (e) => {
-toolState.setStrokeColor(e.target.value)
-toolState.setFillColor(e.target.value)
-  }
+    toolState.setStrokeColor(e.target.value);
+    toolState.setFillColor(e.target.value);
+  };
 
   return (
     <div className="toolbar">
@@ -43,8 +41,14 @@ toolState.setFillColor(e.target.value)
         style={{ marginLeft: 10 }}
         type="color"
       />
-      <button className="toolbar__btn undo" />
-      <button className="toolbar__btn redo" />
+      <button
+        className="toolbar__btn undo"
+        onClick={() => canvasState.undo()}
+      />
+      <button
+        className="toolbar__btn redo"
+        onClick={() => canvasState.redo()}
+      />
       <button className="toolbar__btn save" />
     </div>
   );
